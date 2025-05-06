@@ -4,7 +4,7 @@ import { User } from '../../domain/entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './user.orm.entity';
-import { IUserRepository } from 'src/domain/port/user.repo.port';
+import { IUserRepository } from 'src/domain/port/out/user.repo.port';
 
 
 @Injectable()

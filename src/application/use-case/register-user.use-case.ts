@@ -1,19 +1,21 @@
 import { User } from "src/domain/entities/user.entity";
-import { IHash } from "src/domain/port/hash.port";
-import { IUserRepository } from "src/domain/port/user.repo.port";
+import { RegisterUserPort } from "src/domain/port/in/register-user.port";
+import { IHash } from "src/domain/port/out/hash.port";
+import { IUserRepository } from "src/domain/port/out/user.repo.port";
+import { RegisterUserDto } from "src/application/dto/register.user.dto";
 
 
-export class RegisterUserUseCase{
+export class RegisterUserUseCase implements RegisterUserPort{
    constructor(
       private readonly userRepo : IUserRepository,
       private readonly Hasher: IHash,
    ){}
 
-   async execute(email: string , password: string){
-       const existing = await this.userRepo.findByEmail(email);
+   async execute(data: RegisterUserDto): Promise<void> {
+       const existing = await this.userRepo.findByEmail(data.email);
        if (existing) throw new Error('User already exists');
-       const hashed = await this.Hasher.hash(password);
-       const user = new User(0,email,hashed);
-       return this.userRepo.save(user);
+       const hashed = await this.Hasher.hash(data.password);
+       const user = new User(0,data.email,hashed);
+       await this.userRepo.save(user);
    }
 }
