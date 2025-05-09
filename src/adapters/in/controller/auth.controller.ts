@@ -3,7 +3,6 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { LoginUserUseCase } from 'src/application/use-case/login-user.use-case';
 import { RegisterUserUseCase } from 'src/application/use-case/register-user.use-case';
 
-
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -12,7 +11,7 @@ export class AuthController {
   ) {}
 
   @Post('register')
-  registerUser(@Body() body: { email: string; password: string }) {
+  registerUser(@Body() body: { email: string; password: any }) {
     return this.register.execute(body.email, body.password);
   }
 

@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { IHash } from 'src/domain/port/out/hash.port';
 
-
 @Injectable()
 export class BcryptAdapter implements IHash {
   async hash(data: string): Promise<string> {

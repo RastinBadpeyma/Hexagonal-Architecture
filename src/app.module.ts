@@ -1,11 +1,11 @@
 // app.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from './infrastructure/repositories/user.orm.entity';
-import { TypeOrmUserRepository } from './infrastructure/repositories/typeorm-user.repository';
-import { BcryptAdapter } from './infrastructure/auth/bcrypt.adapter';
+import { UserEntity } from './adapters/out/repositories/user.orm.entity';
+import { TypeOrmUserRepository } from './adapters/out/repositories/typeorm-user.repository';
+import { BcryptAdapter } from './adapters/out/auth/bcrypt.adapter';
 
-import { AuthController } from './adapters/controller/auth.controller';
+import { AuthController } from './adapters/in/controller/auth.controller';
 import { RegisterUserUseCase } from './application/use-case/register-user.use-case';
 import { LoginUserUseCase } from './application/use-case/login-user.use-case';
 
@@ -42,8 +42,7 @@ import { LoginUserUseCase } from './application/use-case/login-user.use-case';
     },
     {
       provide: LoginUserUseCase,
-      useFactory: (userRepo, hasher) =>
-        new LoginUserUseCase(userRepo, hasher),
+      useFactory: (userRepo, hasher) => new LoginUserUseCase(userRepo, hasher),
       inject: ['IUserRepository', 'IHashService'],
     },
   ],
