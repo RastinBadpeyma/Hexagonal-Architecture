@@ -6,8 +6,8 @@ import { TypeOrmUserRepository } from './adapters/out/repositories/typeorm-user.
 import { BcryptAdapter } from './adapters/out/auth/bcrypt.adapter';
 
 import { AuthController } from './adapters/in/controller/auth.controller';
-import { RegisterUserUseCase } from './application/use-case/register-user.use-case';
-import { LoginUserUseCase } from './application/use-case/login-user.use-case';
+import { RegisterUserUseCase } from './core/use-case/register-user.use-case';
+import { LoginUserUseCase } from './core/use-case/login-user.use-case';
 
 @Module({
   imports: [
