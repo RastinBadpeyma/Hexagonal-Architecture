@@ -1,8 +1,8 @@
 import { emit } from 'process';
-import { User } from 'src/domain/entities/user.entity';
-import { LoginUserPort } from 'src/domain/port/in/login-user.port';
-import { IHash } from 'src/domain/port/out/hash.port';
-import { IUserRepository } from 'src/domain/port/out/user.repo.port';
+import { User } from 'src/core/domain/entities/user.entity';
+import { LoginUserPort } from 'src/core/port/in/login-user.port';
+import { IHash } from 'src/core/port/out/hash.port';
+import { IUserRepository } from 'src/core/port/out/user.repo.port';
 
 export class LoginUserUseCase implements LoginUserPort {
   constructor(

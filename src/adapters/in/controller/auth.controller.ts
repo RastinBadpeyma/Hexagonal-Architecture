@@ -1,13 +1,13 @@
 // adapters/controller/auth.controller.ts
 import { Controller, Post, Body } from '@nestjs/common';
-import { LoginUserUseCase } from 'src/application/use-case/login-user.use-case';
-import { RegisterUserUseCase } from 'src/application/use-case/register-user.use-case';
+import { LoginUserPort } from 'src/core/port/in/login-user.port';
+import { RegisterUserPort } from 'src/core/port/in/register-user.port';
 
 @Controller('auth')
 export class AuthController {
   constructor(
-    private readonly register: RegisterUserUseCase,
-    private readonly login: LoginUserUseCase,
+    private readonly register: RegisterUserPort,
+    private readonly login: LoginUserPort,
   ) {}
 
   @Post('register')

@@ -1,7 +1,7 @@
 // infrastructure/hash/bcrypt.adapter.ts
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { IHash } from 'src/domain/port/out/hash.port';
+import { IHash } from 'src/core/port/out/hash.port';
 
 @Injectable()
 export class BcryptAdapter implements IHash {
